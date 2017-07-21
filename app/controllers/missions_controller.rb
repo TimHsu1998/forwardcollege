@@ -1,4 +1,6 @@
 class MissionsController < ApplicationController
+  before_action :authenticate_user! , only: [:new, :create, :edit, :destroy]
+
   def  index
     @missions = Mission.all
   end
@@ -13,6 +15,7 @@ class MissionsController < ApplicationController
 
   def create
     @mission = Mission.new(mission_params)
+    @mission.user = current_user
     if @mission.save
       redirect_to missions_path
     else
@@ -22,6 +25,9 @@ class MissionsController < ApplicationController
 
   def edit
     @mission = Mission.find(params[:id])
+    if current_user != @mission.user
+      redirect_to missions_path, alert: "You have no permission."
+    end
   end
 
   def update
@@ -35,10 +41,16 @@ class MissionsController < ApplicationController
 
   def destroy
     @mission = Mission.find(params[:id])
+
+    if current_user != @mission.user
+      redirect_to missions_path, alert: "You have no permission."
+    end
+    
     @mission.destroy
     flash[:alert] = "Mission deleted"
     redirect_to missions_path
   end
+
   private
 
   def mission_params
