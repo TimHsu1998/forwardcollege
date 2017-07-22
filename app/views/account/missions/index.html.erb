@@ -1,0 +1,38 @@
+<div  class= "col-md-12" >
+
+  <div  class= "group" >
+    <%=  link_to("發表任務" ,  new_mission_path ,  class: "btn btn-primary pull-right" )  %>
+  </div>
+
+  <h2 class="text-center"> 我完成的任務 </h2>
+
+  <table  class= "table table-hover" >
+    <thead>
+      <tr>
+        <td> # </td>
+        <td> 標題 </td>
+        <th> 留言數 </th>
+        <th> 更新時間 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%  @missions.each do |mission|  %>
+        <tr>
+          <td> # </td>
+          <td> <%=  link_to(mission.title, mission_path(mission))  %> </td>
+          <td> <%= mission.comments.count %> </td>
+          <td> <%= mission.updated_at %> </td>
+          <td>
+            <% if current_user && current_user == mission.user %>
+              <%=  link_to("Edit" ,  edit_mission_path(mission),  class: "btn btn-sm btn-default" ) %>
+              <%=  link_to("Delete" ,  mission_path(mission),     class: "btn btn-sm btn-default" ,
+                          method: :delete ,  data: { confirm: "Are you sure?"  }  ) %>
+            <% end %>
+          </td>
+        </tr>
+      <%  end  %>
+    </tbody>
+  </table>
+
+  <%= current_user.missions.count*50%>
+</div>

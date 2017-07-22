@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   resources :missions do
     resources :comments
   end
+  namespace :account do
+    resources :missions
+  end
+
 end
