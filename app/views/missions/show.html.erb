@@ -4,6 +4,9 @@
   </div>
   <h2> <%= @mission.title %> </h2>
   <p> <%= simple_format(@mission.content) %> </p>
+  <% if @mission.image.present? %>
+    <%= image_tag(@mission.image.thumb.url, class: "thumbnail") %>
+  <% end %>
 
   <br>
   <%= link_to("留言", new_mission_comment_path(@mission), class: "btn btn-default pull-middle")%>

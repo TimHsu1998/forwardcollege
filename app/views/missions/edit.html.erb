@@ -2,6 +2,18 @@
     <h2>編輯任務</h2>
 
     <hr>
-     <%=  render  "form"  %>
+    <%= simple_form_for @mission do |f| %>
+      <div class="form-group">
+        <%= f.input :title, label: '標題', input_html: { class: "form-control"} %>
+        <%= f.input :content, label: '內容', input_html: { class: "form-control"} %>
+        <% if @mission.image.present? %>
+         <%= image_tag(@mission.image) %>
+        <% end %>
+        <div class="group">
+          <%= f.input :image, as: :file, multiple: true  %>
+        </div>
+      </div>
+      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+    <% end %>
 
 </div>
