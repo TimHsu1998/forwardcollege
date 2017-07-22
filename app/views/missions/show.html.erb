@@ -1,7 +1,30 @@
 <div  class= "col-md-12" >
   <div  class= "group" >
     <%=  link_to("Edit" ,  edit_mission_path(@mission),  class: "btn btn-primary pull-right" ) %>
-  < /div>
+  </div>
   <h2> <%=  @mission.title  %> </h2>
   <p> <%=  @mission.content %> </p>
+
+  <br>
+  <%= link_to("留言", new_mission_comment_path(@mission), class: "btn btn-default pull-middle")%>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>留言</th>
+        <th>姓名</th>
+        <th>發表時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%=  comment.content %></td>
+          <td><%=  comment.user.email %></td>
+          <td><%=  comment.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 </div>

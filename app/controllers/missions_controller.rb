@@ -2,7 +2,7 @@ class MissionsController < ApplicationController
   before_action :authenticate_user! , only: [:new, :create, :edit, :destroy]
 
   def  index
-    @missions = Mission.all
+    @missions = Mission.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
   end
 
   def new
@@ -11,6 +11,7 @@ class MissionsController < ApplicationController
 
   def show
     @mission = Mission.find(params[:id])
+    @comments = @mission.comments.order("created_at DESC")
   end
 
   def create
@@ -45,7 +46,7 @@ class MissionsController < ApplicationController
     if current_user != @mission.user
       redirect_to missions_path, alert: "You have no permission."
     end
-    
+
     @mission.destroy
     flash[:alert] = "Mission deleted"
     redirect_to missions_path
