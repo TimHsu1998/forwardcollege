@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :missions
   has_many :comments
+
+  def admin?
+    is_admin
+  end
 end

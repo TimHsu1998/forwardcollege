@@ -2,6 +2,10 @@
 
   <h2 class="text-center"> 百日任務 </h2>
 
+  <div class="group">
+    <%= link_to("新增任務", new_mission_path, class: "btn btn-primary pull-right") %>
+  </div>
+
   <table class="table">
     <thead>
       <tr>
@@ -19,6 +23,13 @@
           <td> <%= link_to(mission.title, mission_path(mission)) %> </td>
           <td> <%= mission.comments.count %> </td>
           <td> <%= mission.updated_at %> </td>
+          <td>
+            <% if current_user && current_user.is_admin %>
+              <%=  link_to("Edit" ,  edit_mission_path(mission),  class: "btn btn-sm btn-default" ) %>
+              <%=  link_to("Delete" ,  mission_path(mission),     class: "btn btn-sm btn-default" ,
+                          method: :delete ,  data: { confirm: "Are you sure?"  }  ) %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
