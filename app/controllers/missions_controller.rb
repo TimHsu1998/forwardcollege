@@ -1,8 +1,13 @@
 class MissionsController < ApplicationController
   before_action :authenticate_user! , only: [:new, :create, :edit, :destroy]
-  #before_action :require_is_admin, only: [:edit, :destroy]
   def  index
-    @missions = Mission.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+    if params[:category].blank?
+      @missions = Mission.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+      @categories = Category.all
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @missions = Mission.where(:category_id => @category_id).paginate(:page => params[:page], :per_page => 20)
+    end
   end
 
   def new
@@ -20,6 +25,7 @@ class MissionsController < ApplicationController
     if @mission.save
       redirect_to missions_path
     else
+      @categories = Category.all
       render :new
     end
   end
@@ -36,6 +42,7 @@ class MissionsController < ApplicationController
     if @mission.update(mission_params)
       redirect_to missions_path, notice: "Update Success"
     else
+      @categories = Category.all
       render :edit
     end
   end
@@ -55,6 +62,6 @@ class MissionsController < ApplicationController
   private
 
   def mission_params
-    params.require(:mission).permit(:title, :content, :image)
+    params.require(:mission).permit(:title, :content, :image, :category_id, :category)
   end
 end

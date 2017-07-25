@@ -12,6 +12,7 @@
         <div class="group">
           <%= f.input :image, as: :file, multiple: true  %>
         </div>
+        <%= f.input :category_id, as: :select, collection: @categories, label: "類別" %>
       </div>
       <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
     <% end %>
