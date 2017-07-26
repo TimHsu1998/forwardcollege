@@ -5,10 +5,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  #sstorage :file
+  # storage :file
+
   if Rails.env.production?
     storage :fog
-  else
+  elsif Rails.env.development?
     storage :file
   end
 
