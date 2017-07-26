@@ -1,7 +1,7 @@
-<h2> 分类列表 </h2>
+<h2> 分類列表 </h2>
 
 <div class="pull-right">
-  <%= link_to '新的分类', new_admin_category_path, class: 'btn btn-primary'%>
+  <%= link_to '新的分類', new_admin_category_path, class: 'btn btn-primary'%>
 </div>
 
 <table class="table table-bordered">
@@ -9,8 +9,8 @@
     <tr>
       <th>#</th>
 
-      <th>名称</th>
-      <th colspan="2">设置</th>
+      <th>名稱</th>
+      <th colspan="2">設置</th>
     </tr>
   </thead>
 
@@ -19,8 +19,8 @@
     <tr>
       <td><%= category.id %></td>
       <td><%= category.name%></td>
-      <td><%= link_to '编辑',edit_admin_category_path(category)%></td>
-      <td><%= link_to '删除',admin_category_path(category),method: :delete, data: {confirm: '你确定要删除吗'}%></td>
+      <td><%= link_to '編輯',edit_admin_category_path(category)%></td>
+      <td><%= link_to '刪除',admin_category_path(category),method: :delete, data: {confirm: '你確定要刪除嗎'}%></td>
     </tr>
     <% end %>
 
