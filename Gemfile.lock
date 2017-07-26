@@ -393,7 +393,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   simple_form
-  spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
   turbolinks (~> 5)
