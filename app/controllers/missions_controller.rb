@@ -12,6 +12,7 @@ class MissionsController < ApplicationController
 
   def new
     @mission = Mission.new
+    @categories = Category.all
   end
 
   def show
@@ -22,16 +23,17 @@ class MissionsController < ApplicationController
   def create
     @mission = Mission.new(mission_params)
     @mission.user = current_user
+    @categories = Category.all
     if @mission.save
       redirect_to missions_path
     else
-      @categories = Category.all
       render :new
     end
   end
 
   def edit
     @mission = Mission.find(params[:id])
+    @categories = Category.all
     if current_user != @mission.user && current_user.admin? == false
       redirect_to missions_path, alert: "You have no permission."
     end
@@ -39,10 +41,10 @@ class MissionsController < ApplicationController
 
   def update
     @mission = Mission.find(params[:id])
+    @categories = Category.all
     if @mission.update(mission_params)
       redirect_to missions_path, notice: "Update Success"
     else
-      @categories = Category.all
       render :edit
     end
   end
