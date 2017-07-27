@@ -11,6 +11,7 @@
       <tr>
         <th> # </th>
         <th> 標題 </th>
+        <th> 完成者 </th>
         <th> 類別 </th>
         <th> 留言數 </th>
         <th> 更新時間 </th>
@@ -22,6 +23,7 @@
         <tr>
           <td> # </td>
           <td> <%= link_to(mission.title, mission_path(mission)) %> </td>
+          <td> <%= mission.user.username %></td>
           <td> <%= mission.category.name %></td>
           <td> <%= mission.comments.count %> </td>
           <td> <%= mission.updated_at %> </td>
