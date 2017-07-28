@@ -1,0 +1,25 @@
+<div class="login-wrap">
+  <div class="registration-wrap">
+    <div class="registration-block">
+      <div class="content clearfix">
+        <div class="right-part fr">
+          <div class="devise">
+            <h2>個人資料</h2>
+            <%= simple_form_for [:account, @user] do |f| %>
+              <div class="form-inputs">
+                <%= f.input :username, required: true, label: "姓名"%>
+                <%= f.input :phone, required: true, label: "電話" %>
+                <%= f.input :school, required: true, label: "學校" %>
+                <%= f.input :session, as: :select, label: "期數", collection:
+                [('第一期'), ('第二期'), ('第三期'), ('第四期'), ('第五期'), ('第六期'), ('第七期')], required: true %>
+
+                <div class="form-actions">
+                  <button type="submit" class="registration-btn">儲存</button>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
