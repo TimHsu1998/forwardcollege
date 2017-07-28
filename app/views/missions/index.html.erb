@@ -14,7 +14,7 @@
         <th> 完成者 </th>
         <th> 類別 </th>
         <th> 留言數 </th>
-        <th> 更新時間 </th>
+        <th> 完成日期 </th>
       </tr>
     </thead>
 
@@ -26,7 +26,7 @@
           <td> <%= mission.user.username %></td>
           <td> <%= mission.category.name %></td>
           <td> <%= mission.comments.count %> </td>
-          <td> <%= mission.updated_at %> </td>
+          <td> <%= mission.finishdate %> </td>
           <td>
             <% if current_user && current_user.is_admin %>
               <%=  link_to("Edit" ,  edit_mission_path(mission),  class: "btn btn-sm btn-default" ) %>

@@ -5,9 +5,11 @@
     <%= simple_form_for @mission do |f| %>
       <div class="form-group">
         <%= f.input :title, label: '標題', input_html: { class: "form-control"} %>
-        <%= f.input :content, label: '內容', input_html: { class: "form-control"} %>
-        <%= f.input :image, as: :file, multiple: true  %>
+        <%= f.input :content, label: '簡述任務', input_html: { class: "form-control"} %>
+        <%= f.input :reflection, label: '心得', input_html: { class: "form-control"} %>
+        <%= f.input :image, label: "照片", as: :file, multiple: true  %>
         <%= f.input :category_id, as: :select, collection: @categories, label: "類別" %>
+        <%= f.input :finishdate, label: '完成日期', as: :date, html5: true %>
       </div>
       <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
     <% end %>
