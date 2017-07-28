@@ -1,5 +1,6 @@
 class MissionsController < ApplicationController
   before_action :authenticate_user! , only: [:new, :create, :edit, :destroy]
+  impressionist :actions=>[:show]
   def  index
     if params[:category].blank?
       @missions = Mission.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)

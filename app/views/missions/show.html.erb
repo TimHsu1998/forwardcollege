@@ -3,10 +3,19 @@
     <%=  link_to("Edit" ,  edit_mission_path(@mission),  class: "btn btn-primary pull-right" ) %>
   </div>
   <h2> <%= @mission.title %> </h2>
+
+  <br>
+
   <% if @mission.image.present? %>
     <%= image_tag(@mission.image.url, class: "thumbnail") %>
+    <br>
   <% end %>
+
+  <h4> 任務簡述： </h4>
   <p> <%= simple_format(@mission.content) %> </p>
+  <br>
+  <h4> 心得感想： </h4>
+  <p> <%= simple_format(@mission.reflection) %> </p>
 
   <br>
   <%= link_to("留言", new_mission_comment_path(@mission), class: "btn btn-default pull-middle")%>
