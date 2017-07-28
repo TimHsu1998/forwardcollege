@@ -14,11 +14,13 @@ class MissionsController < ApplicationController
   def new
     @mission = Mission.new
     @categories = Category.all
+    @photo = @mission.photos.build
   end
 
   def show
     @mission = Mission.find(params[:id])
     @comments = @mission.comments.order("created_at DESC")
+    @photos = @mission.photos.all
   end
 
   def create
@@ -26,6 +28,11 @@ class MissionsController < ApplicationController
     @mission.user = current_user
     @categories = Category.all
     if @mission.save
+      if params[:photos] != nil
+        params[:photos]['image'].each do |a|
+          @photo = @mission.photos.create(:image => a)
+        end
+      end
       redirect_to missions_path
     else
       render :new
@@ -43,8 +50,17 @@ class MissionsController < ApplicationController
   def update
     @mission = Mission.find(params[:id])
     @categories = Category.all
-    if @mission.update(mission_params)
-      redirect_to missions_path, notice: "Update Success"
+
+    if params[:photos] != nil
+      @mission.photos.destroy_all
+      params[:photos]['image'].each do |a|
+        @picture = @mission.photos.create(:image => a)
+      end
+      @mission.update(mission_params)
+      redirect_to missions_path
+
+    elsif @mission.update(mission_params)
+      redirect_to missions_path
     else
       render :edit
     end
