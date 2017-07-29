@@ -1,6 +1,14 @@
 <div class="col-md-12">
 
-  <h2 class="text-center"> 已完成的任務 </h2>
+  <h2 class="text-center"> 我完成的任務 </h2>
+  <br>
+
+  <% progress = 0 %>
+  <%  @missions.each do |mission|  %>
+    <% progress = progress + mission.category.points%>
+  <% end %>
+
+  <h4 class="text-center"> 目前進度：<%= number_with_precision(progress * 100.0/210.0, precision: 2) %>%</h4>
 
   <div class="group">
     <%= link_to("新增任務", new_mission_path, class: "btn btn-primary pull-right") %>

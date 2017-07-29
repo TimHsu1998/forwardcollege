@@ -17,6 +17,83 @@
  @import  "bootstrap-sprockets" ;
  @import  "bootstrap" ;
 
+ /*===== 网站通用设置 ======*/
+ body {
+   overflow-x: hidden; //裁切页面内容，超出视窗不显示
+   letter-spacing: 1px; //文字间距
+   font-size: 14px; //文字大小
+   position: relative; //设定为相对位置
+
+   a {
+     text-decoration:none !important; //文字连结移除底线
+   }
+
+   /*===== 基础栏位设定 ======*/
+   .width-25 {
+     width: 25%;
+   }
+
+   .width-50 {
+     width: 50%;
+   }
+
+   .width-75 {
+     width: 75%;
+   }
+
+   .width-100 {
+     width: 100%;
+   }
+ }
+
+ //---------Navbar---------
+
+
+ .navbar-default {
+     //background-color: white;
+     //border-color: white;
+     background-color: #212121;
+     border-color: #212121;
+     margin-bottom: 0;
+     border-radius: 0;
+ }
+
+ .navbar-default.navbar-brand {
+     color: #76FF03;
+     padding: 10px 15px;
+     line-height: 30px;
+ }
+
+ .navbar-default.navbar-brand:hover,
+ .navbar-default.navbar-brand:focus {
+     color: #76FF03;
+     background-color: transparent;
+ }
+
+ .navbar-default.navbar-nav > li > a {
+     color: #76FF03;
+ }
+
+ .navbar-default.navbar-nav > li > a:hover,
+ .navbar-default.navbar-nav > li > a:focus {
+     color: #76FF03;
+     background-color: transparent;
+ }
+
+ .navbar-default.navbar-nav > .active > a,
+ .navbar-default.navbar-nav > .active > a:hover,
+ .navbar-default.navbar-nav > .active > a:focus {
+     color: #76FF03;
+     background-color: #FFE0B2;
+ }
+
+ .navbar-default.navbar-nav > .open > a,
+ .navbar-default.navbar-nav > .open > a:focus,
+ .navbar-default.navbar-nav > .open > a:hover {
+     background-color: #FFE0B2;
+     color: #76FF03 ;
+ }
+
  /*多圖*/
  .productDetail {
  	width: 1200px;

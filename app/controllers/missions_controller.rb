@@ -61,7 +61,7 @@ class MissionsController < ApplicationController
       redirect_to missions_path
 
     elsif @mission.update(mission_params)
-      redirect_to missions_path
+      redirect_to account_missions_path
     else
       render :edit
     end
@@ -76,7 +76,7 @@ class MissionsController < ApplicationController
 
     @mission.destroy
     flash[:alert] = "Mission deleted"
-    redirect_to missions_path
+    redirect_to account_missions_path
   end
 
   private
