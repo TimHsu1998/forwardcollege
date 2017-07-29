@@ -31,6 +31,7 @@
                   <ul class="dropdown-menu">
                     <li><%= link_to("我的任務", account_missions_path) %></li>
                     <li><%= link_to("帳戶管理", edit_account_user_path(current_user)) %></li>
+                    <li><%= link_to("進度排行", admin_users_path)%></li>
                     <% if current_user && current_user.is_admin %>
                       <li><%= link_to("後台管理", admin_categories_path) %> </li>
                     <% end %>
