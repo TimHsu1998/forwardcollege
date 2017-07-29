@@ -1,0 +1,31 @@
+<h2 class="text-center"> 排行榜 </h2>
+
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+
+      <th>姓名</th>
+      <th>完成度</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.username %></td>
+      <td>
+        <% progress = 0 %>
+        <%  user.missions.each do |mission|  %>
+          <% progress = progress + mission.category.points%>
+        <% end %>
+
+        <%= number_with_precision(progress * 100.0/210.0, precision: 2) %>%
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
