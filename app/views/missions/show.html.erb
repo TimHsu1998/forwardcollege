@@ -6,11 +6,25 @@
 
   <br>
 
-  <% if @mission.photos.present? %>
-    <% @mission.photos.each do |p| %>
-      <%= image_tag p.image.url  ,class: "thumbnail" %><br/>
-    <% end %>
-  <% end %>
+
+  <!--多圖-->
+  <div class="productDetail">
+    <div class="productDetail-left">
+      <div class="productDetail-left-bigImage">
+        <%= image_tag(@mission.photos[0].image.url, class: "thumbnail") %>
+      </div>
+      <% if @mission.photos[1].present?%>
+        <div class="productDetail-left-imageList">
+          <% @mission.photos.each do |p| %>
+            <div class="productDetail-left-imageList-item">
+              <%= image_tag p.image.url  ,class: "thumbnail" %><br/>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+    <!--多圖結束-->
 
   <h4> 任務簡述： </h4>
   <p> <%= simple_format(@mission.content) %> </p>
