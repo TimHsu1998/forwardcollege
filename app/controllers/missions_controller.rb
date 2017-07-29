@@ -7,6 +7,7 @@ class MissionsController < ApplicationController
       @categories = Category.all
     else
       @category_id = Category.find_by(name: params[:category]).id
+      @category = Category.find_by(name: params[:category])
       @missions = Mission.where(:category_id => @category_id).paginate(:page => params[:page], :per_page => 20)
     end
   end
