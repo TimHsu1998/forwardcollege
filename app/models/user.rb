@@ -9,6 +9,16 @@ class User < ApplicationRecord
 
   validates :username, presence: true, length: {maximum: 25}
 
+  
+  def total_progress
+    progress = 0.0
+    missions.each do |mission|
+      progress = progress + mission.category.points
+    end
+    progress = progress * 100.0/210.0
+    progress
+  end
+
   def admin?
     is_admin
   end
