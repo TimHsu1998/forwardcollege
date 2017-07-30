@@ -55,22 +55,40 @@
 
     <br>
 
+    <% blank = 0%>
+
     <% @categories.each do |category| %>
-      <h2 class="text-center">
-        <%= category.name %>
-      </h2>
-      <h4 class="text-center">
-        <%= category.intro %>
-      </h4>
-      <br>
-      <td>
-        完成者：
-        <% category.missions.each do |mission| %>
-          <%= link_to(mission.user.username, account_user_path(mission.user)) %>
-        <% end %>
-      </td>
-      <hr>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div style="margin:5px">
+          <div class="container-fluid">
+            <div class="row">
+            <hr>
+            <h4 class="text-center">
+              <%= category.name %>
+            </h4>
+            <h6 class="text-center">
+              <%= category.intro %>
+            </h6>
+            <br>
+            <td>
+              完成者：
+              <% category.missions.each do |mission| %>
+                <%= link_to(mission.user.username, account_user_path(mission.user)) %>
+              <% end %>
+            </td>
+
+            <% blank = blank + 1 %>
+            <% if blank % 2 == 0 %>
+              <br>
+              <br>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
+
+  <!--總導覽結束-->
   <% end %>
 
   <div class="text-center">
