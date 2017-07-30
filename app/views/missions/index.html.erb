@@ -2,6 +2,7 @@
 
 
   <% if @category_id.present? %>
+  <!--各個任務-->
     <h2 class="text-center">
       百日任務：<%= @category.name %>
     </h2>
@@ -9,48 +10,68 @@
     <h4 class="text-center">
       <%= @category.intro %>
     </h4>
-  <% else %>
-    <h2 class="text-center">
-      百日任務
-    </h2>
-  <% end %>
 
-  <div class="group">
-    <%= link_to("新增任務", new_mission_path, class: "btn btn-primary pull-right") %>
-  </div>
+    <div class="group">
+      <%= link_to("新增任務", new_mission_path, class: "btn btn-primary pull-right") %>
+    </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th> # </th>
-        <th> 標題 </th>
-        <th> 完成者 </th>
-        <th> 類別 </th>
-        <th> 完成日期 </th>
-        <th> 瀏覽數 </th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @missions.each do |mission| %>
+    <table class="table">
+      <thead>
         <tr>
-          <td> # </td>
-          <td> <%= link_to(mission.title, mission_path(mission)) %> </td>
-          <td> <% user = mission.user %> <%= link_to(mission.user.username, account_user_path(user)) %></td>
-          <td> <%= mission.category.name %></td>
-          <td> <%= mission.finishdate %> </td>
-          <td> <%= mission.impressionist_count(:filter=>:session_hash) %> </td>
-          <td>
-            <% if current_user && current_user.is_admin %>
-              <%=  link_to("Edit" ,  edit_mission_path(mission),  class: "btn btn-sm btn-default" ) %>
-              <%=  link_to("Delete" ,  mission_path(mission),     class: "btn btn-sm btn-default" ,
-                          method: :delete ,  data: { confirm: "Are you sure?"  }  ) %>
-            <% end %>
-          </td>
+          <th> # </th>
+          <th> 標題 </th>
+          <th> 完成者 </th>
+          <th> 類別 </th>
+          <th> 完成日期 </th>
+          <th> 瀏覽數 </th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @missions.each do |mission| %>
+          <tr>
+            <td> # </td>
+            <td> <%= link_to(mission.title, mission_path(mission)) %> </td>
+            <td> <% user = mission.user %> <%= link_to(mission.user.username, account_user_path(user)) %></td>
+            <td> <%= mission.category.name %></td>
+            <td> <%= mission.finishdate %> </td>
+            <td> <%= mission.impressionist_count(:filter=>:session_hash) %> </td>
+            <td>
+              <% if current_user && current_user.is_admin %>
+                <%=  link_to("Edit" ,  edit_mission_path(mission),  class: "btn btn-sm btn-default" ) %>
+                <%=  link_to("Delete" ,  mission_path(mission),     class: "btn btn-sm btn-default" ,
+                            method: :delete ,  data: { confirm: "Are you sure?"  }  ) %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+  <!--總導覽-->
+    <h1 class="text-center">
+      百日任務總纜
+    </h1>
+
+    <br>
+
+    <% @categories.each do |category| %>
+      <h2 class="text-center">
+        <%= category.name %>
+      </h2>
+      <h4 class="text-center">
+        <%= category.intro %>
+      </h4>
+      <br>
+      <td>
+        完成者：
+        <% category.missions.each do |mission| %>
+          <%= link_to(mission.user.username, account_user_path(mission.user)) %>
+        <% end %>
+      </td>
+      <hr>
+    <% end %>
+  <% end %>
 
   <div class="text-center">
     <%= will_paginate @missions %>
