@@ -12,14 +12,13 @@
   </thead>
 
   <tbody>
+    <% ranking = 0 %>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.id %></td>
+        <% ranking = ranking + 1%>
+        <td><%= ranking %></td>
         <td><%= user.username %></td>
-        <td>
-        <% user.progress = render_user_total_progress(user) %>
-        <%= number_with_precision(user.progress, precision: 2) %>%
-      </td>
+        <td><%= number_with_precision(user.progress, precision: 2) %>%</td>
       </tr>
     <% end %>
 

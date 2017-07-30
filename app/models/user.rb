@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, length: {maximum: 25}
 
-  
+
   def total_progress
     progress = 0.0
     missions.each do |mission|
