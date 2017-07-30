@@ -43,7 +43,7 @@
   <%  @missions.each do |mission|  %>
     <% progress = progress + mission.category.points%>
   <% end %>
-  <h4 class="text-center"> 目前進度：<%= number_with_precision(progress * 100.0/210.0, precision: 2) %>%</h4>
+  <h4 class="text-center"> 目前進度：<%= number_with_precision(progress * 100.0/140.0, precision: 2) %>%</h4>
 
   <br>
 

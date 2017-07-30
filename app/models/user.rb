@@ -16,7 +16,7 @@ class User < ApplicationRecord
     missions.each do |mission|
       progress = progress + mission.category.points
     end
-    progress = progress * 100.0/210.0
+    progress = progress * 100.0/140.0
     progress
   end
 
