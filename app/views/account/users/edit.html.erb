@@ -7,20 +7,24 @@
             <h2>個人資料</h2>
             <%= simple_form_for [:account, @user] do |f| %>
               <div class="form-inputs">
-                <%= f.input :username, required: true, label: "姓名"%>
-                <%= f.input :phone, required: true, label: "電話" %>
-                <%= f.input :school, required: true, label: "學校" %>
-                <%= f.input :session, as: :select, label: "期數", collection:
-                [('第一期'), ('第二期'), ('第三期'), ('第四期'), ('第五期'), ('第六期'), ('第七期')], required: true %>
+                <%= f.input :username, required: true ,label:"姓名"%>
+                <%= f.input :nickname, required: true ,label:"暱稱"%>
+                <%= f.input :phone, required: true ,label:"手機電話"%>
+                <%= f.input :highschool, required: true ,label:"畢業高中"%>
+                <%= f.input :school, required: true ,label:"就讀學校"%>
+                <%= f.input :major, required: true ,label:"目前科系"%>
+                <%= f.input :session, as: :select, label:"年級", collection:
+                [('大一'), ('大二'), ('大三'), ('大四'), ('大五'), ('研ㄧ'), ('研二'), ('就業中')], required: true %>
+                <%= f.input :session, as: :select, label:"期數", collection:
+                [('第一期'), ('第二期'), ('第三期'), ('第四期'), ('第五期'), ('第六期'), ('第七期'), ('第八期')], required: true %>
                 <%= f.input :selfintro, required: true, label: "自我介紹" %>
                 <% if @user.image.present? %>
                    <%= image_tag(@user.image.thumb.url) %>
                  <% end %>
                 <%= f.input :image, as: :file, label: "照片" %>
-
-                <div class="form-actions">
-                  <button type="submit" class="registration-btn">儲存</button>
-                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="registration-btn">儲存</button>
               </div>
             <% end %>
         </div>

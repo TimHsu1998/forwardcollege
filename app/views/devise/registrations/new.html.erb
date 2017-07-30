@@ -5,15 +5,20 @@
 
     <div class="form-inputs">
       <%= f.input :username, required: true ,label:"姓名"%>
-      <%= f.input :email, required: true, autofocus: true ,label:"信箱"%>
-      <%= f.input :password, required: true ,label:"密碼"%>
-      <%= f.input :password_confirmation, required: true ,label:"密碼"%>
-      <%= f.input :phone, required: true ,label:"電話"%>
-      <%= f.input :school, required: true ,label:"學校"%>
+      <%= f.input :nickname, required: true ,label:"暱稱"%>
+      <%= f.input :email, required: true, autofocus: true ,label:"登入信箱"%>
+      <%= f.input :password, required: true ,label:"登入密碼"%>
+      <%= f.input :password_confirmation, required: true ,label:"確認密碼"%>
+      <%= f.input :phone, required: true ,label:"手機電話"%>
+      <%= f.input :highschool, required: true ,label:"畢業高中"%>
+      <%= f.input :school, required: true ,label:"就讀學校"%>
+      <%= f.input :major, required: true ,label:"目前科系"%>
+      <%= f.input :session, as: :select, label:"年級", collection:
+      [('大一'), ('大二'), ('大三'), ('大四'), ('大五'), ('研ㄧ'), ('研二'), ('就業中')], required: true %>
       <%= f.input :session, as: :select, label:"期數", collection:
-      [('第一期'), ('第二期'), ('第三期'), ('第四期'), ('第五期'), ('第六期'), ('第七期')], required: true %>
+      [('第一期'), ('第二期'), ('第三期'), ('第四期'), ('第五期'), ('第六期'), ('第七期'), ('第八期')], required: true %>
       <%= f.input :selfintro, required: true, label: "自我介紹" %>
-      <%= f.input :image, as: :file %>
+      <%= f.input :image, as: :file, label: "照片"%>
     </div>
 
     <div class="form-actions">
