@@ -1,6 +1,6 @@
 class Account::UsersController < ApplicationController
   # 使用者必須登入
-  before_action :authenticate_user!
+  before_action :authenticate_user! , only: [:update, :edit]
 
   def edit
     @user = current_user
@@ -18,7 +18,7 @@ class Account::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @missions = current_user.missions
+    @missions = @user.missions
   end
 
 private
