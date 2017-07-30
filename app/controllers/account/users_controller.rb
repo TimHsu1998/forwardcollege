@@ -16,9 +16,14 @@ class Account::UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @missions = current_user.missions
+  end
+
 private
 
   def user_params
-    params.require(:user).permit(:username, :school, :session, :phone)
+    params.require(:user).permit(:username, :school, :session, :phone, :selfintro, :image)
   end
 end

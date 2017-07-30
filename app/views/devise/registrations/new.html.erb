@@ -12,13 +12,12 @@
       <%= f.input :school, required: true ,label:"學校"%>
       <%= f.input :session, as: :select, label:"期數", collection:
       [('第一期'), ('第二期'), ('第三期'), ('第四期'), ('第五期'), ('第六期'), ('第七期')], required: true %>
+      <%= f.input :selfintro, required: true, label: "自我介紹" %>
+      <%= f.input :image, as: :file %>
     </div>
 
     <div class="form-actions">
       <%= f.button :submit, "Sign up" %>
-    </div>
-    <div class="form-actions">
-      <%= link_to "用Facebook登入", user_facebook_omniauth_authorize_path, class: "btn btn-info" %>
     </div>
   <% end %>
 </div>

@@ -36,7 +36,7 @@
         <tr>
           <td> # </td>
           <td> <%= link_to(mission.title, mission_path(mission)) %> </td>
-          <td> <%= mission.user.username %></td>
+          <td> <% user = mission.user %> <%= link_to(mission.user.username, account_user_path(user)) %></td>
           <td> <%= mission.category.name %></td>
           <td> <%= mission.finishdate %> </td>
           <td> <%= mission.impressionist_count(:filter=>:session_hash) %> </td>

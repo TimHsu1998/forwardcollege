@@ -1,29 +1,33 @@
 <div  class= "col-md-12" >
-  <div  class= "group" >
-    <%=  link_to("Edit" ,  edit_mission_path(@mission),  class: "btn btn-primary pull-right" ) %>
-  </div>
+  <% if @mission.user == current_user %>
+    <div  class= "group" >
+      <%=  link_to("Edit" ,  edit_mission_path(@mission),  class: "btn btn-primary pull-right" ) %>
+    </div>
+  <% end %>
   <h2> <%= @mission.title %> </h2>
 
   <br>
 
 
   <!--多圖-->
-  <div class="productDetail">
-    <div class="productDetail-left">
-      <div class="productDetail-left-bigImage">
-        <%= image_tag(@mission.photos[0].image.url, class: "thumbnail") %>
-      </div>
-      <% if @mission.photos[1].present?%>
-        <div class="productDetail-left-imageList">
-          <% @mission.photos.each do |p| %>
-            <div class="productDetail-left-imageList-item">
-              <%= image_tag p.image.url  ,class: "thumbnail" %><br/>
-            </div>
-          <% end %>
+  <% if @mission.photos[0].present?%>
+    <div class="productDetail">
+      <div class="productDetail-left">
+        <div class="productDetail-left-bigImage">
+          <%= image_tag(@mission.photos[0].image.url, class: "thumbnail") %>
         </div>
-      <% end %>
+        <% if @mission.photos[1].present?%>
+          <div class="productDetail-left-imageList">
+            <% @mission.photos.each do |p| %>
+              <div class="productDetail-left-imageList-item">
+                <%= image_tag p.image.url  ,class: "thumbnail" %><br/>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
     <!--多圖結束-->
 
   <h4> 任務簡述： </h4>

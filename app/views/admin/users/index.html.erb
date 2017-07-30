@@ -15,9 +15,9 @@
     <% ranking = 0 %>
     <% @users.each do |user| %>
       <tr>
-        <% ranking = ranking + 1%>
+        <% ranking = ranking + 1 %>
         <td><%= ranking %></td>
-        <td><%= user.username %></td>
+        <td><%= link_to(user.username, account_user_path(user)) %></td>
         <td><%= number_with_precision(user.progress, precision: 2) %>%</td>
       </tr>
     <% end %>

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :identifies
 
   validates :username, presence: true, length: {maximum: 25}
+  mount_uploader :image, ImageUploader
 
 
   def total_progress
