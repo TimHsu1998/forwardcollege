@@ -11,6 +11,7 @@
     <div class="form-actions">
       <%= f.button :submit, "Log in" %>
     </div>
+    <%= link_to "用Facebook登录", user_facebook_omniauth_authorize_path, class: "btn btn-info" %>
   <% end %>
 
   <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
