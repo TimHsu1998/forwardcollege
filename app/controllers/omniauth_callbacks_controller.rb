@@ -4,7 +4,12 @@ class OmniauthCallbacksController < ApplicationController
 
 		if @user.persisted?
 			flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
-			sign_in_and_redirect @user, :event => :authentication
+      if @user.nickname == nil
+        sign_in @user, :event => :authentication
+        redirect_to edit_account_user_path(current_user)
+      else
+        sign_in_and_redirect @user, :event => :authentication
+      end
 		else
 			session["devise.user_data"] = request.env["omniauth.auth"]
 			redirect_to new_user_registration_path
