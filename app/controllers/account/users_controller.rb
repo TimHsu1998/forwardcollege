@@ -10,7 +10,7 @@ class Account::UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     if @user.save
-      redirect_to edit_account_user_path(current_user)
+      redirect_to account_user_path(current_user)
     else
       render :edit
     end

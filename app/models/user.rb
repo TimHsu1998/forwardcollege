@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_many :missions
   has_many :comments
   has_many :identifies
-
+  validates :username, :school, :session, :phone, :selfintro,
+  :highschool, :year, :major, :nickname, presence: true
   validates :username, presence: true, length: {maximum: 25}
   mount_uploader :image, ImageUploader
 

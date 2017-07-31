@@ -15,10 +15,12 @@
     <% ranking = 0 %>
     <% @users.each do |user| %>
       <tr>
-        <% ranking = ranking + 1 %>
-        <td><%= ranking %></td>
-        <td><%= link_to(user.username, account_user_path(user)) %></td>
-        <td><%= number_with_precision(user.progress, precision: 2) %>%</td>
+        <% if user.missions.count != 0 %>
+          <% ranking = ranking + 1 %>
+          <td><%= ranking %></td>
+          <td><%= link_to(user.username, account_user_path(user)) %></td>
+          <td><%= user.missions.count %>/14</td>
+        <% end %>
       </tr>
     <% end %>
 
