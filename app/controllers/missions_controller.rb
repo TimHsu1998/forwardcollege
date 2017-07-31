@@ -1,5 +1,6 @@
 class MissionsController < ApplicationController
   before_action :authenticate_user! , only: [:new, :create, :edit, :destroy]
+  before_action :check_information, only: [:new, :create]
   impressionist :actions=>[:show]
   def  index
     if params[:category].blank?
