@@ -9,7 +9,7 @@
       <%= f.input :highschool, required: true ,label:"畢業高中"%>
       <%= f.input :school, required: true ,label:"就讀學校"%>
       <%= f.input :major, required: true ,label:"目前科系"%>
-      <%= f.input :session, as: :select, label:"年級", collection:
+      <%= f.input :year, as: :select, label:"年級", collection:
       [('大一'), ('大二'), ('大三'), ('大四'), ('大五'), ('研ㄧ'), ('研二'), ('就業中')], required: true %>
       <%= f.input :session, as: :select, label:"期數", collection:
       [('第一期'), ('第二期'), ('第三期'), ('第四期'), ('第五期'), ('第六期'), ('第七期'), ('第八期')], required: true %>
@@ -19,7 +19,7 @@
        <% end %>
       <%= f.input :image, as: :file, label: "照片" %>
     </div>
-    
+
     <div class="form-actions">
       <button type="submit" class="registration-btn">儲存</button>
     </div>
